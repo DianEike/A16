@@ -1,7 +1,7 @@
-import java.util.Scanner; // Importação correta da biblioteca Scanner
+import java.util.Scanner; 
 
-public class Main { // A classe deve começar aqui
-    public static void main(String[] args) { // O método main também deve estar correto aqui
+public class Main { 
+    public static void main(String[] args) { 
         // Declaração de variável
         int opcao;
         // Cria objeto para entrada da opção do cardápio
