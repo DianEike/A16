@@ -101,7 +101,7 @@ public class GestorDeProdutos {
     public static void editarProduto(Scanner sc) {
         System.out.println("Digite o índice do produto para editar: ");
         int index = sc.nextInt();
-        sc.nextLine();  // Limpar o buffer
+        sc.nextLine();
 
         if (index < 0 || index >= listaNomes.size()) {
             System.out.println("Índice inválido.");
