@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestorDeProdutos {
+public class CardapioPitdog {
     static List<String> listaNomes = new ArrayList<>();
     static List<String> listaDescricao = new ArrayList<>();
     static List<Boolean> listaAtivo = new ArrayList<>();
@@ -26,6 +26,7 @@ public class GestorDeProdutos {
     }
 
     public static void mostrarMenu() {
+        System.out.println("Menu do Cardápio Pitdog");
         System.out.println("Digite 1 para cadastrar um novo produto.");
         System.out.println("Digite 2 para ver todos os produtos.");
         System.out.println("Digite 3 para editar um produto.");
@@ -77,12 +78,12 @@ public class GestorDeProdutos {
         Double preco = sc.nextDouble();
         listaPreco.add(preco);
 
-        System.out.println("Produto adicionado!");
+        System.out.println("Produto adicionado ao Cardápio!");
     }
 
     public static void listarProdutos() {
         if (listaNomes.isEmpty()) {
-            System.out.println("Nenhum produto cadastrado.");
+            System.out.println("Nenhum produto cadastrado no Cardápio.");
         } else {
             for (int i = 0; i < listaNomes.size(); i++) {
                 if (!listaAtivo.get(i)) {
@@ -124,7 +125,7 @@ public class GestorDeProdutos {
         Double preco = sc.nextDouble();
         listaPreco.set(index, preco);
 
-        System.out.println("Produto editado com sucesso!");
+        System.out.println("Produto editado com sucesso no Cardápio!");
     }
 
     public static void removerProduto(Scanner sc) {
@@ -140,6 +141,6 @@ public class GestorDeProdutos {
         listaDescricao.remove(index);
         listaAtivo.remove(index);
         listaPreco.remove(index);
-        System.out.println("Produto removido com sucesso!");
+        System.out.println("Produto removido com sucesso do Cardápio!");
     }
 }
