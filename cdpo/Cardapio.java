@@ -3,6 +3,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 class Produto {
     String id;
@@ -23,14 +24,16 @@ class Cliente {
     String endereco;
     String sexo;
     String telefone;
+    String email; // Novo atributo para o e-mail
     Date nascimento;
     boolean autorizado;
 
-    public Cliente(String nome, String endereco, String sexo, String telefone, Date nascimento, boolean autorizado) {
+    public Cliente(String nome, String endereco, String sexo, String telefone, String email, Date nascimento, boolean autorizado) {
         this.nome = nome.toUpperCase();
         this.endereco = endereco;
         this.sexo = sexo.toUpperCase();
         this.telefone = telefone;
+        this.email = email; // Inicializa o e-mail
         this.nascimento = nascimento;
         this.autorizado = autorizado;
     }
@@ -191,6 +194,15 @@ public class CardapioPitdog {
         System.out.print("Digite o telefone do cliente: ");
         String telefone = sc.nextLine();
 
+        System.out.print("Digite o e-mail do cliente: ");
+        String email = sc.nextLine();
+
+        // Validação simples de e-mail
+        if (!isValidEmail(email)) {
+            System.out.println("E-mail inválido. Tente novamente.");
+            return;
+        }
+
         System.out.print("Digite a data de nascimento (dd/mm/aaaa): ");
         String dataStr = sc.nextLine();
         Date nascimento = null;
@@ -207,7 +219,7 @@ public class CardapioPitdog {
             System.out.print("O cliente autoriza o recebimento de mensagens? (1 para sim, 2 para não): ");
             boolean autorizado = sc.nextInt() == 1;
 
-            clientes.add(new Cliente(nome, endereco, sexo, telefone, nascimento, autorizado));
+            clientes.add(new Cliente(nome, endereco, sexo, telefone, email, nascimento, autorizado));
             System.out.println("Cliente cadastrado com sucesso!");
 
         } catch (Exception e) {
@@ -222,7 +234,14 @@ public class CardapioPitdog {
             return;
         }
         for (Cliente c : clientes) {
-            System.out.printf("Nome: %s | Endereço: %s | Sexo: %s | Telefone: %s\n", c.nome, c.endereco, c.sexo, c.telefone);
+            System.out.printf("Nome: %s | Endereço: %s | Sexo: %s | Telefone: %s | E-mail: %s\n", 
+                c.nome, c.endereco, c.sexo, c.telefone, c.email);
         }
+    }
+
+    // Método para validar e-mail
+    private static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return Pattern.matches(emailRegex, email);
     }
 }
